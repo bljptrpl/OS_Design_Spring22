@@ -1,0 +1,20 @@
+all: dvillalva_bankClient.c dvillalva_bankServer.c dvillalva_banking.h
+	gcc -pthread dvillalva_bankClient.c -o bankClient
+	gcc -pthread dvillalva_bankServer.c -o bankServer
+bankClient: dvillalva_bankClient.c dvillalva_banking.h
+	gcc -pthread dvillalva_bankClient.c -o bankClient
+bankServer: dvillalva_bankServer.c dvillalva_banking.h
+	gcc -pthread dvillalva_bankServer.c -o bankServer
+clean:
+	rm *.o; rm bankClient; rm bankServer
+	
+m1: bankClient.c dvillalva_banking.h 
+	gcc -pthread dvillalva_bankClient.c -o bankClient
+	./bankClient 127.0.0.1 4444 D 2 500
+	
+m2: bankClient.c dvillalva_banking.h 
+	gcc -pthread dvillalva_bankClient.c -o bankClient
+	./bankClient 129.108.32.2 26207 W 1 100
+c1: 
+	rm bankClient;
+	
